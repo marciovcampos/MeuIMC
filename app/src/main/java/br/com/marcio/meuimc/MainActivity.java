@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     public String informaClassificacaoIMC(double imc){
 
-        String descricao = "Peso normal";
+        String descricao = "PESO NORMAL";
 
         return descricao;
 
