@@ -1,10 +1,14 @@
 package br.com.marcio.meuimc;
 
+import android.app.ActionBar;
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,20 +19,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void CalcularIMC(View view){
-        TextView txtIMC = findViewById(R.id.txtImcId);
-        TextView txtDescricaoIMC = findViewById(R.id.txtDescricaoImcId);
 
-        EditText edtPeso = findViewById(R.id.edtPesoId);
-        EditText edtAltura = findViewById(R.id.edtAlturaId);
+        if(validarCampos(view)) {
 
-        double peso = Double.valueOf(edtPeso.getText().toString());
-        double altura = Double.parseDouble(edtAltura.getText().toString())/100;
-        double imc = Math.round(peso/(altura*altura));
-        txtIMC.setText(String.valueOf(imc));
+            TextView txtIMC = findViewById(R.id.txtImcId);
+            TextView txtDescricaoIMC = findViewById(R.id.txtDescricaoImcId);
 
-        String descricao = informaClassificacaoIMC(imc);
+            EditText edtPeso = findViewById(R.id.edtPesoId);
+            EditText edtAltura = findViewById(R.id.edtAlturaId);
 
-        txtDescricaoIMC.setText(String.valueOf(descricao));
+            double peso = Double.parseDouble(edtPeso.getText().toString());
+            double altura = Double.parseDouble(edtAltura.getText().toString()) / 100;
+            double imc = (double) Math.round(peso / (altura * altura));
+            txtIMC.setText(String.valueOf(imc));
+
+            String descricao = informaClassificacaoIMC(imc);
+
+            txtDescricaoIMC.setText(String.valueOf(descricao));
+        }
 
     }
 
@@ -57,4 +65,28 @@ public class MainActivity extends AppCompatActivity {
         return descricao;
 
     }
+
+    public boolean validarCampos(View view) {
+
+        Boolean validar = true;
+
+        EditText edtPeso = findViewById(R.id.edtPesoId);
+        EditText edtAltura = findViewById(R.id.edtAlturaId);
+
+        if (edtPeso.getText().toString().equals("")) {
+            Toast.makeText(getApplicationContext(), "Preencha o PESO!", Toast.LENGTH_SHORT).show();
+            edtPeso.requestFocus();
+            validar = false;
+        }else if (edtAltura.getText().toString().equals("")) {
+            Toast.makeText(getApplicationContext(), "Preencha a ALTURA!", Toast.LENGTH_SHORT).show();
+            edtAltura.requestFocus();
+            validar = false;
+        }
+
+        return validar;
+
+    }
+
+
+
 }
