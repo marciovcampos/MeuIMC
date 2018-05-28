@@ -34,7 +34,25 @@ public class MainActivity extends AppCompatActivity {
 
     public String informaClassificacaoIMC(double imc){
 
-        String descricao = "PESO NORMAL";
+        String descricao = "";
+
+        if(imc < 16){
+            descricao = "MAGREZA GRAVE";
+        }else if(imc < 17){
+            descricao = "MAGREZA MODERADA";
+        }else if(imc < 18.5){
+            descricao = "MAGREZA LEVE";
+        }else if(imc < 25){
+            descricao = "SAUDÁVEL";
+        }else if(imc < 30){
+            descricao = "SOBREPESO";
+        }else if(imc < 35){
+            descricao = "OBESIDADE GRAU I";
+        }else if(imc < 40){
+            descricao = "OBESIDADE GRAU I (SEVERA)";
+        }else{
+            descricao = "OBESIDADE GRAU I (MÓRBIDA)";
+        }
 
         return descricao;
 
