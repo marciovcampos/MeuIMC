@@ -3,7 +3,7 @@
 # Meu IMC
 Meu IMC é um App em Android Nativo (Java) feito para Calcular o IMC.
 
-Este aplicativo foi desenvolvido para a disciplina de DESENVOLVIMENTO DE APLICAÇÕES PARA ANDROID para a pós-gradução de Desenvolvimento de Aplicações para Dispositivos Móveis na PUC Minas.
+Este aplicativo foi desenvolvido para a disciplina de DESENVOLVIMENTO DE APLICAÇÕES PARA ANDROID para a pós-graduação de Desenvolvimento de Aplicações para Dispositivos Móveis na PUC Minas.
 
 ## Interface
 
